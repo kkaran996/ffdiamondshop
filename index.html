@@ -561,11 +561,19 @@
       </div>
      </fieldset>
      <div>
-      <label class="block text-2xl font-extrabold mb-3 text-purple-400 drop-shadow-md select-none" for="uid">
-       Enter your Free Fire UID
-      </label>
-      <input autocomplete="off" class="w-full rounded-3xl border-4 border-purple-400 bg-gray-900 px-6 py-4 text-white placeholder-purple-300 text-xl font-semibold focus:outline-none focus:ring-4 focus:ring-purple-500 focus:border-purple-500 shadow-lg" id="uid" inputmode="numeric" name="uid" placeholder="Free Fire UID" required="" type="text"/>
-      
+  <label class="block text-2xl font-extrabold mb-3 text-purple-400 drop-shadow-md select-none" for="uid">
+    Enter your Free Fire UID
+  </label>
+  <input 
+    autocomplete="off" 
+    class="w-full rounded-3xl border-4 border-purple-400 bg-gray-900 px-6 py-4 text-white placeholder-purple-300 text-xl font-semibold focus:outline-none focus:ring-4 focus:ring-purple-500 focus:border-purple-500 shadow-lg" 
+    id="uid" 
+    inputmode="numeric" 
+    name="uid" 
+    placeholder="Free Fire UID" 
+    required 
+    type="text"
+  />
      </div>
      <button class="w-full btn-glow py-4 rounded-3xl text-2xl shadow-xl select-none disabled:opacity-60 disabled:cursor-not-allowed" disabled="" id="submit-btn" type="submit" tabindex="0">
       Submit
@@ -722,28 +730,25 @@
 
       // Validate UID input (10 digits)
       function validateUID() {
-        const val = uidInput.value.trim();
-        const isValid = /^[0-9]{10}$/.test(val);
-        if (!isValid && val.length > 0) {
-          uidError.classList.remove('hidden');
-          uidInput.setAttribute('aria-invalid', 'true');
-        } else {
-          uidError.classList.add('hidden');
-          uidInput.removeAttribute('aria-invalid');
-        }
-        return isValid;
-      }
+  const val = uidInput.value.trim();
+  const isValid = val !== ""; // ✅ Just check if not empty
 
-      // Enable submit only if pack selected and UID valid
-      function validateForm() {
-        const uidValid = validateUID();
-        const packSelected = selectedPack !== null;
-        submitBtn.disabled = !(uidValid && packSelected);
-      }
+  // Hide error always (since we're not showing validation message)
+  uidError.classList.add('hidden');
+  uidInput.removeAttribute('aria-invalid');
 
-      uidInput.addEventListener('input', () => {
-        validateForm();
-      });
+  return isValid;
+}
+
+// Enable submit only if pack selected and UID filled
+function validateForm() {
+  const uidValid = validateUID();
+  const packSelected = selectedPack !== null;
+  submitBtn.disabled = !(uidValid && packSelected);
+}
+
+// Run validation on typing
+uidInput.addEventListener('input', validateForm);
 
       // On form submit show receipt
       topupForm.addEventListener('submit', (e) => {
