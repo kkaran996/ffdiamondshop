@@ -1,0 +1,877 @@
+<html class="scroll-smooth" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Free Fire Discount Shop
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at center, #1a1a1a 0%, #0b0b0b 100%);
+      color: #fff;
+      user-select: none;
+    }
+    /* Glowing button */
+    .btn-glow {
+      background: linear-gradient(45deg, #9c27b0, #673ab7, #9c27b0);
+      background-size: 200% 200%;
+      animation: glow 3s ease infinite;
+      box-shadow: 0 0 8px #9c27b0, 0 0 20px #673ab7;
+      color: #fff;
+      font-weight: 700;
+      transition: background-position 0.5s ease, color 0.3s ease;
+      user-select: none;
+    }
+    .btn-glow:hover, .btn-glow:focus-visible {
+      background-position: 100% 0;
+      box-shadow: 0 0 15px #9c27b0, 0 0 30px #673ab7;
+      color: #fff;
+      outline: none;
+    }
+    @keyframes glow {
+      0% {
+        background-position: 0% 0%;
+      }
+      50% {
+        background-position: 100% 0%;
+      }
+      100% {
+        background-position: 0% 0%;
+      }
+    }
+    /* Card gradient border */
+    .card-gradient-border {
+      position: relative;
+      border-radius: 1rem;
+      padding: 2px;
+      background: linear-gradient(135deg, #9c27b0, #673ab7, #9c27b0);
+      background-size: 200% 200%;
+      animation: glow 3s ease infinite;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+    .card-gradient-border:hover, .card-gradient-border:focus-visible {
+      transform: scale(1.07);
+      outline: none;
+      z-index: 10;
+      box-shadow: 0 0 20px #673ab7aa;
+    }
+    .card-gradient-border > .card-content {
+      background: #111111;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 0 15px #673ab7aa inset;
+      user-select: none;
+    }
+    /* Scrollbar for pack options */
+    #pack-options {
+      max-height: 480px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #673ab7 #1a1a1a;
+      user-select: none;
+    }
+    #pack-options::-webkit-scrollbar {
+      width: 8px;
+    }
+    #pack-options::-webkit-scrollbar-track {
+      background: #1a1a1a;
+      border-radius: 4px;
+    }
+    #pack-options::-webkit-scrollbar-thumb {
+      background: #673ab7;
+      border-radius: 4px;
+    }
+    /* Focus ring for accessibility */
+    label[role="radio"]:focus-visible {
+      outline: 3px solid #9c27b0;
+      outline-offset: 2px;
+      z-index: 10;
+      position: relative;
+    }
+    /* Animated diamond sparkle */
+    .sparkle {
+      position: relative;
+      display: inline-block;
+    }
+    .sparkle::before, .sparkle::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(circle, #9c27b0 40%, transparent 70%);
+      border-radius: 50%;
+      transform-origin: center;
+      animation: sparkle-anim 2.5s linear infinite;
+      opacity: 0.8;
+      filter: drop-shadow(0 0 4px #9c27b0);
+    }
+    .sparkle::after {
+      animation-delay: 1.25s;
+    }
+    @keyframes sparkle-anim {
+      0% {
+        transform: translate(-50%, -50%) scale(0.8) rotate(0deg);
+        opacity: 0.8;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
+        opacity: 0.3;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(0.8) rotate(360deg);
+        opacity: 0.8;
+      }
+    }
+    /* Receipt styling */
+    #receipt {
+      background: linear-gradient(135deg, #9c27b0, #673ab7);
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: 0 0 30px #673ab7cc;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.125rem;
+      user-select: text;
+      position: relative;
+      overflow: hidden;
+    }
+    #receipt::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, #e1bee7 40%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    #receipt h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: #fff;
+      text-shadow: 1px 1px 3px #9c27b0;
+    }
+    #receipt p {
+      margin-bottom: 0.6rem;
+      line-height: 1.4;
+      color: #fff;
+      text-shadow: 0 0 2px #9c27b0;
+    }
+    #receipt .highlight {
+      color: #fff;
+      font-size: 1.5rem;
+      margin-top: 1.5rem;
+      text-align: center;
+      text-shadow: 0 0 8px #673ab7;
+    }
+    /* Animated pulse for pay now button */
+    #pay-now-btn {
+      animation: pulseGlow 2.5s infinite;
+      user-select: none;
+    }
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 0 15px #9c27b0, 0 0 30px #673ab7;
+      }
+      50% {
+        box-shadow: 0 0 25px #9c27b0, 0 0 45px #673ab7;
+      }
+    }
+    /* Input focus */
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #9c27b0;
+      border-color: #9c27b0;
+    }
+    /* Smooth scroll for anchor links */
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Tooltip style for copy button */
+    #copy-upi-btn[data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #673ab7;
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      font-size: 0.875rem;
+      opacity: 0.9;
+      pointer-events: none;
+      user-select: none;
+      z-index: 50;
+    }
+  </style>
+ </head>
+ <body>
+  <header class="bg-gradient-to-r from-purple-500 via-purple-700 to-purple-900 shadow-2xl sticky top-0 z-50">
+   <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between select-none">
+    <div class="flex items-center space-x-4">
+     <img alt="Free Fire Max logo with purple flames around stylized FF letters" class="w-14 h-14 rounded-full shadow-lg" height="56" src="https://storage.googleapis.com/a1aa/image/578eebf8-e4d2-40ef-d326-2dbeeeb01d86.jpg" width="56"/>
+     <h1 class="text-3xl font-extrabold tracking-wider text-white drop-shadow-lg">
+      Free Fire Discount Shop
+     </h1>
+    </div>
+    <nav class="hidden md:flex space-x-10 font-semibold text-white/90 tracking-wide">
+     <a class="hover:text-white transition duration-300 ease-in-out" href="#packs" tabindex="0">
+      Packs
+     </a>
+     <a class="hover:text-white transition duration-300 ease-in-out" href="#topup" tabindex="0">
+      Topup
+     </a>
+     <a class="hover:text-white transition duration-300 ease-in-out" href="#contact" tabindex="0">
+      Contact
+     </a>
+    </nav>
+    <button aria-label="Toggle menu" class="md:hidden text-white text-3xl focus:outline-none" id="mobile-menu-button" tabindex="0">
+     <i class="fas fa-bars">
+     </i>
+    </button>
+   </div>
+   <nav class="md:hidden bg-gradient-to-r from-purple-500 via-purple-700 to-purple-900 px-6 py-4 space-y-3 hidden" id="mobile-menu">
+    <a class="block text-white font-semibold hover:underline text-lg" href="#packs" tabindex="0">
+     Packs
+    </a>
+    <a class="block text-white font-semibold hover:underline text-lg" href="#topup" tabindex="0">
+     Topup
+    </a>
+    <a class="block text-white font-semibold hover:underline text-lg" href="#contact" tabindex="0">
+     Contact
+    </a>
+   </nav>
+  </header>
+  <main class="flex-grow max-w-6xl mx-auto px-6 py-10">
+   <section class="mb-16" id="packs" tabindex="-1">
+    <h2 class="text-4xl font-extrabold mb-10 text-center text-purple-400 drop-shadow-lg select-none">
+     Diamond Packs &amp; Memberships
+    </h2>
+    <div aria-label="Diamond packs and memberships" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10" role="list">
+     <article aria-label="100 Diamonds pack for 40 rupees instead of 80 rupees" class="card-gradient-border" data-pack-amount="40" data-pack-diamonds="100" data-pack-name="100 Diamonds Pack" data-pack-original="80" data-pack-type="pack" tabindex="0" role="listitem" aria-pressed="false" role="button">
+      <div class="card-content">
+       <img alt="Illustration of 100 shiny purple diamonds sparkling with purple background" class="w-full rounded-lg mb-5 shadow-lg" height="140" loading="lazy" src="https://storage.googleapis.com/a1aa/image/68292415-89e4-4fb7-1e65-9ba6d2eb1c2b.jpg" width="280"/>
+       <h3 class="text-2xl font-bold mb-2 text-purple-400 sparkle select-none">
+        100 Diamonds Pack
+       </h3>
+       <p class="text-xl font-extrabold text-white mb-1 select-none">
+        ₹40
+        <span class="line-through text-white/60 ml-3 text-lg font-semibold select-none">
+         ₹80
+        </span>
+       </p>
+       <p class="text-purple-300 font-semibold tracking-wide select-none">
+        Save 50%
+       </p>
+      </div>
+     </article>
+     <article aria-label="310 Diamonds pack for 120 rupees instead of 240 rupees" class="card-gradient-border" data-pack-amount="120" data-pack-diamonds="310" data-pack-name="310 Diamonds Pack" data-pack-original="240" data-pack-type="pack" tabindex="0" role="listitem" aria-pressed="false" role="button">
+      <div class="card-content">
+       <img alt="Illustration of 310 shiny purple diamonds sparkling with purple background" class="w-full rounded-lg mb-5 shadow-lg" height="140" loading="lazy" src="https://storage.googleapis.com/a1aa/image/eb0ffff5-22d8-4bac-af65-e03f7c7d32f7.jpg" width="280"/>
+       <h3 class="text-2xl font-bold mb-2 text-purple-400 sparkle select-none">
+        310 Diamonds Pack
+       </h3>
+       <p class="text-xl font-extrabold text-white mb-1 select-none">
+        ₹120
+        <span class="line-through text-white/60 ml-3 text-lg font-semibold select-none">
+         ₹240
+        </span>
+       </p>
+       <p class="text-purple-300 font-semibold tracking-wide select-none">
+        Save 50%
+       </p>
+      </div>
+     </article>
+     <article aria-label="520 Diamonds pack for 200 rupees instead of 400 rupees" class="card-gradient-border" data-pack-amount="200" data-pack-diamonds="520" data-pack-name="520 Diamonds Pack" data-pack-original="400" data-pack-type="pack" tabindex="0" role="listitem" aria-pressed="false" role="button">
+      <div class="card-content">
+       <img alt="Illustration of 520 shiny purple diamonds sparkling with purple background" class="w-full rounded-lg mb-5 shadow-lg" height="140" loading="lazy" src="https://storage.googleapis.com/a1aa/image/df02ff0a-57b1-49d5-6cea-fc61da1767a7.jpg" width="280"/>
+       <h3 class="text-2xl font-bold mb-2 text-purple-400 sparkle select-none">
+        520 Diamonds Pack
+       </h3>
+       <p class="text-xl font-extrabold text-white mb-1 select-none">
+        ₹200
+        <span class="line-through text-white/60 ml-3 text-lg font-semibold select-none">
+         ₹400
+        </span>
+       </p>
+       <p class="text-purple-300 font-semibold tracking-wide select-none">
+        Save 50%
+       </p>
+      </div>
+     </article>
+     <article aria-label="1060 Diamonds pack for 400 rupees instead of 800 rupees" class="card-gradient-border" data-pack-amount="400" data-pack-diamonds="1060" data-pack-name="1060 Diamonds Pack" data-pack-original="800" data-pack-type="pack" tabindex="0" role="listitem" aria-pressed="false" role="button">
+      <div class="card-content">
+       <img alt="Illustration of 1060 shiny purple diamonds sparkling with purple background" class="w-full rounded-lg mb-5 shadow-lg" height="140" loading="lazy" src="https://storage.googleapis.com/a1aa/image/e016e2f8-ad4a-407e-d747-2d30c94fd36c.jpg" width="280"/>
+       <h3 class="text-2xl font-bold mb-2 text-purple-400 sparkle select-none">
+        1060 Diamonds Pack
+       </h3>
+       <p class="text-xl font-extrabold text-white mb-1 select-none">
+        ₹400
+        <span class="line-through text-white/60 ml-3 text-lg font-semibold select-none">
+         ₹800
+        </span>
+       </p>
+       <p class="text-purple-300 font-semibold tracking-wide select-none">
+        Save 50%
+       </p>
+      </div>
+     </article>
+     <article aria-label="2180 Diamonds pack for 800 rupees instead of 1600 rupees" class="card-gradient-border" data-pack-amount="800" data-pack-diamonds="2180" data-pack-name="2180 Diamonds Pack" data-pack-original="1600" data-pack-type="pack" tabindex="0" role="listitem" aria-pressed="false" role="button">
+      <div class="card-content">
+       <img alt="Illustration of 2180 shiny purple diamonds sparkling with purple background" class="w-full rounded-lg mb-5 shadow-lg" height="140" loading="lazy" src="https://storage.googleapis.com/a1aa/image/ed100336-be2c-4ef9-c938-28c33be3f520.jpg" width="280"/>
+       <h3 class="text-2xl font-bold mb-2 text-purple-400 sparkle select-none">
+        2180 Diamonds Pack
+       </h3>
+       <p class="text-xl font-extrabold text-white mb-1 select-none">
+        ₹800
+        <span class="line-through text-white/60 ml-3 text-lg font-semibold select-none">
+         ₹1600
+        </span>
+       </p>
+       <p class="text-purple-300 font-semibold tracking-wide select-none">
+        Save 50%
+       </p>
+      </div>
+     </article>
+     <article aria-label="5600 Diamonds pack for 2000 rupees instead of 4000 rupees" class="card-gradient-border" data-pack-amount="2000" data-pack-diamonds="5600" data-pack-name="5600 Diamonds Pack" data-pack-original="4000" data-pack-type="pack" tabindex="0" role="listitem" aria-pressed="false" role="button">
+      <div class="card-content">
+       <img alt="Illustration of 5600 shiny purple diamonds sparkling with purple background" class="w-full rounded-lg mb-5 shadow-lg" height="140" loading="lazy" src="https://storage.googleapis.com/a1aa/image/458fe92f-64e0-4b09-5f5b-4d1fd7b81247.jpg" width="280"/>
+       <h3 class="text-2xl font-bold mb-2 text-purple-400 sparkle select-none">
+        5600 Diamonds Pack
+       </h3>
+       <p class="text-xl font-extrabold text-white mb-1 select-none">
+        ₹2000
+        <span class="line-through text-white/60 ml-3 text-lg font-semibold select-none">
+         ₹4000
+        </span>
+       </p>
+       <p class="text-purple-300 font-semibold tracking-wide select-none">
+        Save 50%
+       </p>
+      </div>
+     </article>
+     <article aria-label="Weekly membership for 59 rupees instead of 159 rupees" class="card-gradient-border" data-pack-amount="59" data-pack-diamonds="Membership" data-pack-name="Weekly Membership" data-pack-original="159" data-pack-type="membership" tabindex="0" role="listitem" aria-pressed="false" role="button">
+      <div class="card-content">
+       <img alt="Illustration of a purple membership card with purple flames and weekly badge" class="w-full rounded-lg mb-5 shadow-lg" height="140" loading="lazy" src="https://storage.googleapis.com/a1aa/image/cd5515f0-cdb5-4065-4991-ab6f9ddc2a4c.jpg" width="280"/>
+       <h3 class="text-2xl font-bold mb-2 text-purple-400 sparkle select-none">
+        Weekly Membership
+       </h3>
+       <p class="text-xl font-extrabold text-white mb-1 select-none">
+        ₹59
+        <span class="line-through text-white/60 ml-3 text-lg font-semibold select-none">
+         ₹159
+        </span>
+       </p>
+       <p class="text-purple-300 font-semibold tracking-wide select-none">
+        Save 63%
+       </p>
+      </div>
+     </article>
+     <article aria-label="Monthly membership for 250 rupees instead of 799 rupees" class="card-gradient-border" data-pack-amount="250" data-pack-diamonds="Membership" data-pack-name="Monthly Membership" data-pack-original="799" data-pack-type="membership" tabindex="0" role="listitem" aria-pressed="false" role="button">
+      <div class="card-content">
+       <img alt="Illustration of a purple membership card with purple flames and monthly badge" class="w-full rounded-lg mb-5 shadow-lg" height="140" loading="lazy" src="https://storage.googleapis.com/a1aa/image/97e3dfc7-d474-4ee6-1ce9-6d05c3ec788a.jpg" width="280"/>
+       <h3 class="text-2xl font-bold mb-2 text-purple-400 sparkle select-none">
+        Monthly Membership
+       </h3>
+       <p class="text-xl font-extrabold text-white mb-1 select-none">
+        ₹250
+        <span class="line-through text-white/60 ml-3 text-lg font-semibold select-none">
+         ₹799
+        </span>
+       </p>
+       <p class="text-purple-300 font-semibold tracking-wide select-none">
+        Save 69%
+       </p>
+      </div>
+     </article>
+    </div>
+   </section>
+   <section class="mb-16 max-w-xl mx-auto" id="topup" tabindex="-1">
+    <h2 class="text-4xl font-extrabold mb-8 text-center text-purple-400 drop-shadow-lg select-none">
+     Topup Your Diamonds
+    </h2>
+    <form class="bg-gradient-to-tr from-purple-500 via-purple-700 to-purple-900 rounded-3xl p-8 shadow-2xl space-y-8" id="topup-form" novalidate="">
+     <fieldset class="space-y-6">
+      <legend class="text-2xl font-extrabold mb-4 text-white drop-shadow-md select-none">
+       Select a Pack or Membership
+      </legend>
+      <div aria-label="Diamond packs and memberships" class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-h-96 overflow-y-auto px-2" id="pack-options" role="radiogroup" tabindex="0" aria-multiselectable="false" aria-live="polite" aria-relevant="additions removals">
+       <label aria-checked="false" aria-labelledby="label-100" class="cursor-pointer bg-gray-900 rounded-2xl p-5 flex items-center space-x-5 shadow-lg ring-2 ring-transparent hover:ring-purple-400 focus:ring-purple-400 transition duration-300 select-none" data-pack-amount="40" data-pack-diamonds="100" data-pack-name="100 Diamonds Pack" data-pack-original="80" data-pack-type="pack" role="radio" tabindex="0">
+        <input aria-describedby="desc-100" class="hidden" id="pack-100" name="pack" type="radio" value="100 Diamonds Pack"/>
+        <img alt="Icon showing 100 shiny purple diamonds" class="w-20 h-14 rounded-lg flex-shrink-0 shadow-lg" height="56" loading="lazy" src="https://storage.googleapis.com/a1aa/image/0f12e8a3-957b-4b14-c672-1fcd4c660bc7.jpg" width="80"/>
+        <div>
+         <p class="font-extrabold text-purple-400 text-xl" id="label-100">
+          100 Diamonds Pack
+         </p>
+         <p class="text-lg text-purple-300 font-semibold" id="desc-100">
+          ₹40
+          <span class="line-through text-white/70 ml-2 text-base font-normal">
+           ₹80
+          </span>
+          <span class="ml-3 text-sm font-semibold text-purple-400">
+           Save 50%
+          </span>
+         </p>
+        </div>
+       </label>
+       <label aria-checked="false" aria-labelledby="label-310" class="cursor-pointer bg-gray-900 rounded-2xl p-5 flex items-center space-x-5 shadow-lg ring-2 ring-transparent hover:ring-purple-400 focus:ring-purple-400 transition duration-300 select-none" data-pack-amount="120" data-pack-diamonds="310" data-pack-name="310 Diamonds Pack" data-pack-original="240" data-pack-type="pack" role="radio" tabindex="0">
+        <input aria-describedby="desc-310" class="hidden" id="pack-310" name="pack" type="radio" value="310 Diamonds Pack"/>
+        <img alt="Icon showing 310 shiny purple diamonds" class="w-20 h-14 rounded-lg flex-shrink-0 shadow-lg" height="56" loading="lazy" src="https://storage.googleapis.com/a1aa/image/756bea44-3ec3-4974-9baa-41abbec3b996.jpg" width="80"/>
+        <div>
+         <p class="font-extrabold text-purple-400 text-xl" id="label-310">
+          310 Diamonds Pack
+         </p>
+         <p class="text-lg text-purple-300 font-semibold" id="desc-310">
+          ₹120
+          <span class="line-through text-white/70 ml-2 text-base font-normal">
+           ₹240
+          </span>
+          <span class="ml-3 text-sm font-semibold text-purple-400">
+           Save 50%
+          </span>
+         </p>
+        </div>
+       </label>
+       <label aria-checked="false" aria-labelledby="label-520" class="cursor-pointer bg-gray-900 rounded-2xl p-5 flex items-center space-x-5 shadow-lg ring-2 ring-transparent hover:ring-purple-400 focus:ring-purple-400 transition duration-300 select-none" data-pack-amount="200" data-pack-diamonds="520" data-pack-name="520 Diamonds Pack" data-pack-original="400" data-pack-type="pack" role="radio" tabindex="0">
+        <input aria-describedby="desc-520" class="hidden" id="pack-520" name="pack" type="radio" value="520 Diamonds Pack"/>
+        <img alt="Icon showing 520 shiny purple diamonds" class="w-20 h-14 rounded-lg flex-shrink-0 shadow-lg" height="56" loading="lazy" src="https://storage.googleapis.com/a1aa/image/a0ce6012-c617-461d-9321-801ec5047e86.jpg" width="80"/>
+        <div>
+         <p class="font-extrabold text-purple-400 text-xl" id="label-520">
+          520 Diamonds Pack
+         </p>
+         <p class="text-lg text-purple-300 font-semibold" id="desc-520">
+          ₹200
+          <span class="line-through text-white/70 ml-2 text-base font-normal">
+           ₹400
+          </span>
+          <span class="ml-3 text-sm font-semibold text-purple-400">
+           Save 50%
+          </span>
+         </p>
+        </div>
+       </label>
+       <label aria-checked="false" aria-labelledby="label-1060" class="cursor-pointer bg-gray-900 rounded-2xl p-5 flex items-center space-x-5 shadow-lg ring-2 ring-transparent hover:ring-purple-400 focus:ring-purple-400 transition duration-300 select-none" data-pack-amount="400" data-pack-diamonds="1060" data-pack-name="1060 Diamonds Pack" data-pack-original="800" data-pack-type="pack" role="radio" tabindex="0">
+        <input aria-describedby="desc-1060" class="hidden" id="pack-1060" name="pack" type="radio" value="1060 Diamonds Pack"/>
+        <img alt="Icon showing 1060 shiny purple diamonds" class="w-20 h-14 rounded-lg flex-shrink-0 shadow-lg" height="56" loading="lazy" src="https://storage.googleapis.com/a1aa/image/5de1fe54-3d9a-43fa-6860-4955ede3cd73.jpg" width="80"/>
+        <div>
+         <p class="font-extrabold text-purple-400 text-xl" id="label-1060">
+          1060 Diamonds Pack
+         </p>
+         <p class="text-lg text-purple-300 font-semibold" id="desc-1060">
+          ₹400
+          <span class="line-through text-white/70 ml-2 text-base font-normal">
+           ₹800
+          </span>
+          <span class="ml-3 text-sm font-semibold text-purple-400">
+           Save 50%
+          </span>
+         </p>
+        </div>
+       </label>
+       <label aria-checked="false" aria-labelledby="label-2180" class="cursor-pointer bg-gray-900 rounded-2xl p-5 flex items-center space-x-5 shadow-lg ring-2 ring-transparent hover:ring-purple-400 focus:ring-purple-400 transition duration-300 select-none" data-pack-amount="800" data-pack-diamonds="2180" data-pack-name="2180 Diamonds Pack" data-pack-original="1600" data-pack-type="pack" role="radio" tabindex="0">
+        <input aria-describedby="desc-2180" class="hidden" id="pack-2180" name="pack" type="radio" value="2180 Diamonds Pack"/>
+        <img alt="Icon showing 2180 shiny purple diamonds" class="w-20 h-14 rounded-lg flex-shrink-0 shadow-lg" height="56" loading="lazy" src="https://storage.googleapis.com/a1aa/image/24deb668-843b-484d-47d5-fa7d07dfd5ff.jpg" width="80"/>
+        <div>
+         <p class="font-extrabold text-purple-400 text-xl" id="label-2180">
+          2180 Diamonds Pack
+         </p>
+         <p class="text-lg text-purple-300 font-semibold" id="desc-2180">
+          ₹800
+          <span class="line-through text-white/70 ml-2 text-base font-normal">
+           ₹1600
+          </span>
+          <span class="ml-3 text-sm font-semibold text-purple-400">
+           Save 50%
+          </span>
+         </p>
+        </div>
+       </label>
+       <label aria-checked="false" aria-labelledby="label-5600" class="cursor-pointer bg-gray-900 rounded-2xl p-5 flex items-center space-x-5 shadow-lg ring-2 ring-transparent hover:ring-purple-400 focus:ring-purple-400 transition duration-300 select-none" data-pack-amount="2000" data-pack-diamonds="5600" data-pack-name="5600 Diamonds Pack" data-pack-original="4000" data-pack-type="pack" role="radio" tabindex="0">
+        <input aria-describedby="desc-5600" class="hidden" id="pack-5600" name="pack" type="radio" value="5600 Diamonds Pack"/>
+        <img alt="Icon showing 5600 shiny purple diamonds" class="w-20 h-14 rounded-lg flex-shrink-0 shadow-lg" height="56" loading="lazy" src="https://storage.googleapis.com/a1aa/image/d34aa3cd-deb1-45ce-0c34-e90d9c188370.jpg" width="80"/>
+        <div>
+         <p class="font-extrabold text-purple-400 text-xl" id="label-5600">
+          5600 Diamonds Pack
+         </p>
+         <p class="text-lg text-purple-300 font-semibold" id="desc-5600">
+          ₹2000
+          <span class="line-through text-white/70 ml-2 text-base font-normal">
+           ₹4000
+          </span>
+          <span class="ml-3 text-sm font-semibold text-purple-400">
+           Save 50%
+          </span>
+         </p>
+        </div>
+       </label>
+       <label aria-checked="false" aria-labelledby="label-weekly" class="cursor-pointer bg-gray-900 rounded-2xl p-5 flex items-center space-x-5 shadow-lg ring-2 ring-transparent hover:ring-purple-400 focus:ring-purple-400 transition duration-300 select-none" data-pack-amount="59" data-pack-diamonds="Membership" data-pack-name="Weekly Membership" data-pack-original="159" data-pack-type="membership" role="radio" tabindex="0">
+        <input aria-describedby="desc-weekly" class="hidden" id="pack-weekly" name="pack" type="radio" value="Weekly Membership"/>
+        <img alt="Icon showing purple membership card with weekly badge" class="w-20 h-14 rounded-lg flex-shrink-0 shadow-lg" height="56" loading="lazy" src="https://storage.googleapis.com/a1aa/image/c4ab874c-196c-4553-2b6e-b6aa3ffe8839.jpg" width="80"/>
+        <div>
+         <p class="font-extrabold text-purple-400 text-xl" id="label-weekly">
+          Weekly Membership
+         </p>
+         <p class="text-lg text-purple-300 font-semibold" id="desc-weekly">
+          ₹59
+          <span class="line-through text-white/70 ml-2 text-base font-normal">
+           ₹159
+          </span>
+          <span class="ml-3 text-sm font-semibold text-purple-400">
+           Save 63%
+          </span>
+         </p>
+        </div>
+       </label>
+       <label aria-checked="false" aria-labelledby="label-monthly" class="cursor-pointer bg-gray-900 rounded-2xl p-5 flex items-center space-x-5 shadow-lg ring-2 ring-transparent hover:ring-purple-400 focus:ring-purple-400 transition duration-300 select-none" data-pack-amount="250" data-pack-diamonds="Membership" data-pack-name="Monthly Membership" data-pack-original="799" data-pack-type="membership" role="radio" tabindex="0">
+        <input aria-describedby="desc-monthly" class="hidden" id="pack-monthly" name="pack" type="radio" value="Monthly Membership"/>
+        <img alt="Icon showing purple membership card with monthly badge" class="w-20 h-14 rounded-lg flex-shrink-0 shadow-lg" height="56" loading="lazy" src="https://storage.googleapis.com/a1aa/image/4731d741-379e-4a18-5554-11982c82986c.jpg" width="80"/>
+        <div>
+         <p class="font-extrabold text-purple-400 text-xl" id="label-monthly">
+          Monthly Membership
+         </p>
+         <p class="text-lg text-purple-300 font-semibold" id="desc-monthly">
+          ₹250
+          <span class="line-through text-white/70 ml-2 text-base font-normal">
+           ₹799
+          </span>
+          <span class="ml-3 text-sm font-semibold text-purple-400">
+           Save 69%
+          </span>
+         </p>
+        </div>
+       </label>
+      </div>
+     </fieldset>
+     <div>
+      <label class="block text-2xl font-extrabold mb-3 text-purple-400 drop-shadow-md select-none" for="uid">
+       Enter your Free Fire UID
+      </label>
+      <input aria-describedby="uid-error" autocomplete="off" class="w-full rounded-3xl border-4 border-purple-400 bg-gray-900 px-6 py-4 text-white placeholder-purple-300 text-xl font-semibold focus:outline-none focus:ring-4 focus:ring-purple-500 focus:border-purple-500 shadow-lg" id="uid" inputmode="numeric" maxlength="10" name="uid" pattern="[0-9]{10}" placeholder="10-digit Free Fire UID" required="" type="text"/>
+      <p class="text-red-500 mt-2 text-lg font-semibold hidden" id="uid-error" role="alert">
+       Please enter a valid 10-digit UID.
+      </p>
+     </div>
+     <button class="w-full btn-glow py-4 rounded-3xl text-2xl shadow-xl select-none disabled:opacity-60 disabled:cursor-not-allowed" disabled="" id="submit-btn" type="submit" tabindex="0">
+      Submit
+     </button>
+    </form>
+   </section>
+   <section class="max-w-xl mx-auto hidden" id="receipt-section" tabindex="-1" aria-live="polite" aria-atomic="true">
+    <h2 class="text-4xl font-extrabold mb-8 text-center text-purple-400 drop-shadow-lg select-none">
+     Order Receipt
+    </h2>
+    <div id="receipt" role="region" aria-label="Order receipt details" tabindex="0">
+    </div>
+    <div class="mt-8 flex flex-col space-y-6">
+     <button aria-label="Pay now" class="btn-glow py-4 rounded-3xl text-2xl shadow-xl select-none" id="pay-now-btn" tabindex="0">
+      Pay Now
+     </button>
+    </div>
+   </section>
+   <section class="max-w-xl mx-auto hidden mt-16 bg-gradient-to-tr from-purple-500 via-purple-700 to-purple-900 rounded-3xl p-8 space-y-8 shadow-2xl" id="payment-section" tabindex="-1" aria-live="polite" aria-atomic="true">
+    <h2 class="text-4xl font-extrabold mb-6 text-center text-purple-50 drop-shadow-lg select-none">
+     Payment Details
+    </h2>
+    <div class="flex flex-col items-center space-y-6">
+     <div class="bg-gray-900 rounded-3xl p-6 w-full flex flex-col sm:flex-row sm:justify-between sm:items-center shadow-lg ring-4 ring-purple-400 relative">
+      <div class="flex items-center space-x-5">
+       <i class="fas fa-qrcode text-purple-400 text-4xl drop-shadow-lg" aria-hidden="true">
+       </i>
+       <div>
+        <p class="font-extrabold text-purple-300 text-lg select-none">
+         UPI ID
+        </p>
+        <p class="text-purple-400 select-all break-all text-2xl font-extrabold" id="upi-id" tabindex="0" role="textbox" aria-readonly="true">
+         9315612481@fam
+        </p>
+       </div>
+      </div>
+      <button aria-label="Copy UPI ID" class="mt-5 sm:mt-0 bg-purple-400 text-gray-900 font-extrabold px-6 py-3 rounded-3xl hover:bg-purple-500 transition duration-300 flex items-center space-x-3 shadow-lg select-none relative" id="copy-upi-btn" tabindex="0" data-tooltip="Copy UPI ID">
+       <i class="fas fa-copy text-lg" aria-hidden="true">
+       </i>
+       <span>
+        Copy UPI
+       </span>
+      </button>
+     </div>
+     <div class="bg-gray-900 rounded-3xl p-6 w-full flex flex-col sm:flex-row sm:justify-between sm:items-center shadow-lg ring-4 ring-purple-400 select-none">
+      <p class="font-extrabold text-purple-300 text-lg">
+       Amount to Pay
+      </p>
+      <p class="text-purple-400 text-4xl font-extrabold" id="payment-amount" tabindex="0" aria-live="polite" aria-atomic="true">
+       ₹0
+      </p>
+     </div>
+     <p class="text-center text-purple-100 font-extrabold text-lg tracking-wide select-none">
+      Complete the payment within
+      <span class="text-purple-300 font-extrabold text-2xl" id="timer" aria-live="polite" aria-atomic="true">
+       05:00
+      </span>
+     </p>
+     <button aria-label="Payment is done" class="w-full btn-glow py-4 rounded-3xl text-2xl shadow-xl select-none" id="payment-done-btn" tabindex="0">
+      Payment is Done
+     </button>
+    </div>
+   </section>
+  </main>
+  <footer class="bg-gradient-to-r from-purple-500 via-purple-700 to-purple-900 text-gray-900 py-8 mt-auto shadow-inner select-none" id="contact">
+   <div class="max-w-6xl mx-auto px-6 text-center">
+    <p class="font-extrabold text-lg tracking-wide text-purple-900 drop-shadow-md">
+     Contact &amp; Support
+    </p>
+    <p class="mt-2 text-purple-900 font-semibold tracking-wide">
+     Join our Telegram channel for updates and support:
+    </p>
+    <a class="inline-block mt-4 px-8 py-3 bg-gray-900 text-purple-400 font-extrabold rounded-3xl hover:bg-gray-800 transition duration-300 shadow-lg select-none" href="https://t.me/freefirediamonddiscount" rel="noopener noreferrer" target="_blank" tabindex="0">
+     t.me/freefirediamonddiscount
+    </a>
+   </div>
+  </footer>
+  <!-- Popup Modal -->
+  <div aria-describedby="popup-desc" aria-labelledby="popup-title" aria-modal="true" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-6 hidden" id="popup" role="dialog" tabindex="-1">
+   <div class="bg-gradient-to-tr from-purple-500 via-purple-700 to-purple-900 rounded-3xl max-w-md w-full p-8 space-y-6 text-center text-purple-50 shadow-2xl ring-4 ring-purple-300 select-none">
+    <h3 class="text-3xl font-extrabold drop-shadow-lg" id="popup-title">
+     Send Payment Screenshot
+    </h3>
+    <p class="text-xl font-extrabold tracking-wide" id="popup-desc">
+     Please send your payment screenshot to claim your diamonds.
+    </p>
+    <button class="mt-6 btn-glow py-4 rounded-3xl text-2xl shadow-xl select-none" id="popup-close-btn" tabindex="0">
+     Close
+    </button>
+   </div>
+  </div>
+  <script>
+   (() => {
+      const mobileMenuBtn = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      const packOptions = document.querySelectorAll('#pack-options label');
+      const topupForm = document.getElementById('topup-form');
+      const uidInput = document.getElementById('uid');
+      const uidError = document.getElementById('uid-error');
+      const submitBtn = document.getElementById('submit-btn');
+      const receiptSection = document.getElementById('receipt-section');
+      const receiptDiv = document.getElementById('receipt');
+      const payNowBtn = document.getElementById('pay-now-btn');
+      const paymentSection = document.getElementById('payment-section');
+      const upiIdElem = document.getElementById('upi-id');
+      const paymentAmountElem = document.getElementById('payment-amount');
+      const copyUpiBtn = document.getElementById('copy-upi-btn');
+      const timerElem = document.getElementById('timer');
+      const paymentDoneBtn = document.getElementById('payment-done-btn');
+      const popup = document.getElementById('popup');
+      const popupCloseBtn = document.getElementById('popup-close-btn');
+
+      let selectedPack = null;
+      let timerInterval = null;
+      let timerSeconds = 300; // 5 minutes
+
+      // Accessibility: manage aria-checked for radio labels
+      function updateAriaChecked(selectedLabel) {
+        packOptions.forEach((label) => {
+          label.setAttribute('aria-checked', label === selectedLabel ? 'true' : 'false');
+          label.setAttribute('aria-pressed', label === selectedLabel ? 'true' : 'false');
+        });
+      }
+
+      // Scroll to UID input smoothly
+      function scrollToUID() {
+        uidInput.focus({ preventScroll: true });
+        setTimeout(() => {
+          uidInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }
+
+      // Select pack on label click or keyboard
+      packOptions.forEach((label) => {
+        label.addEventListener('click', () => {
+          const input = label.querySelector('input[type="radio"]');
+          input.checked = true;
+          selectedPack = label.dataset;
+          updateAriaChecked(label);
+          validateForm();
+          scrollToUID();
+        });
+        label.addEventListener('keydown', (e) => {
+          if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault();
+            label.click();
+          }
+        });
+      });
+
+      // Validate UID input (10 digits)
+      function validateUID() {
+        const val = uidInput.value.trim();
+        const isValid = /^[0-9]{10}$/.test(val);
+        if (!isValid && val.length > 0) {
+          uidError.classList.remove('hidden');
+          uidInput.setAttribute('aria-invalid', 'true');
+        } else {
+          uidError.classList.add('hidden');
+          uidInput.removeAttribute('aria-invalid');
+        }
+        return isValid;
+      }
+
+      // Enable submit only if pack selected and UID valid
+      function validateForm() {
+        const uidValid = validateUID();
+        const packSelected = selectedPack !== null;
+        submitBtn.disabled = !(uidValid && packSelected);
+      }
+
+      uidInput.addEventListener('input', () => {
+        validateForm();
+      });
+
+      // On form submit show receipt
+      topupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!selectedPack) return;
+        if (!validateUID()) return;
+
+        // Hide form and show receipt
+        topupForm.classList.add('hidden');
+        receiptSection.classList.remove('hidden');
+        paymentSection.classList.add('hidden');
+        popup.classList.add('hidden');
+
+        // Build receipt content with detailed and impactful style
+        const packName = selectedPack.packName;
+        const amount = Number(selectedPack.packAmount);
+        const original = Number(selectedPack.packOriginal);
+        const diamonds = selectedPack.packDiamonds;
+        const uid = uidInput.value.trim();
+        const discountPercent = Math.round(((original - amount) / original) * 100);
+
+        receiptDiv.innerHTML = `
+          <h3>Order Summary</h3>
+          <p><strong>Player UID:</strong> <span aria-label="Player unique ID">${uid}</span></p>
+          <p><strong>Selected Pack:</strong> <span aria-label="Pack name">${packName}</span></p>
+          <p><strong>Diamonds:</strong> <span aria-label="Number of diamonds">${diamonds}</span></p>
+          <p><strong>Original Price:</strong> ₹${original.toLocaleString()}</p>
+          <p><strong>Discount:</strong> <span class="text-purple-200">-${discountPercent}%</span></p>
+          <p><strong>Discounted Price:</strong> ₹${amount.toLocaleString()}</p>
+          <hr class="my-6 border-purple-700"/>
+          <p class="highlight" aria-label="Net payable amount">Net Payable Amount: ₹${amount.toLocaleString()}</p>
+          <p class="text-center mt-6 text-purple-200 font-semibold text-lg select-text" aria-label="Important notice">
+            Please double-check your UID and pack before proceeding. Payments are non-refundable.
+          </p>
+        `;
+
+        // Scroll to receipt
+        receiptSection.scrollIntoView({ behavior: 'smooth' });
+        receiptDiv.focus();
+      });
+
+      // Pay Now button click
+      payNowBtn.addEventListener('click', () => {
+        if (!selectedPack) return;
+        receiptSection.classList.add('hidden');
+        paymentSection.classList.remove('hidden');
+        popup.classList.add('hidden');
+
+        const amount = Number(selectedPack.packAmount);
+        paymentAmountElem.textContent = `₹${amount.toLocaleString()}`;
+        upiIdElem.textContent = '9315612481@fam';
+
+        // Reset and start timer
+        clearInterval(timerInterval);
+        timerSeconds = 300;
+        updateTimerDisplay();
+        timerInterval = setInterval(() => {
+          timerSeconds--;
+          updateTimerDisplay();
+          if (timerSeconds <= 0) {
+            clearInterval(timerInterval);
+            timerElem.textContent = '00:00';
+            alert('Payment time expired. Please try again.');
+            resetToForm();
+          }
+        }, 1000);
+
+        paymentSection.scrollIntoView({ behavior: 'smooth' });
+        paymentAmountElem.focus();
+      });
+
+      // Update timer display mm:ss
+      function updateTimerDisplay() {
+        const m = Math.floor(timerSeconds / 60)
+          .toString()
+          .padStart(2, '0');
+        const s = (timerSeconds % 60).toString().padStart(2, '0');
+        timerElem.textContent = `${m}:${s}`;
+      }
+
+      // Copy UPI ID to clipboard
+      copyUpiBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(upiIdElem.textContent);
+          copyUpiBtn.setAttribute('data-tooltip', 'Copied!');
+          setTimeout(() => {
+            copyUpiBtn.setAttribute('data-tooltip', 'Copy UPI ID');
+          }, 2000);
+        } catch {
+          alert('Failed to copy UPI ID. Please copy manually.');
+        }
+      });
+
+      // Payment done button click
+      paymentDoneBtn.addEventListener('click', () => {
+        clearInterval(timerInterval);
+        popup.classList.remove('hidden');
+        paymentSection.scrollIntoView({ behavior: 'smooth' });
+        popup.focus();
+      });
+
+      // Popup close button
+      popupCloseBtn.addEventListener('click', () => {
+        popup.classList.add('hidden');
+        window.location.href = 'https://t.me/freefirediamonddiscount';
+      });
+
+      // Reset to initial form state
+      function resetToForm() {
+        selectedPack = null;
+        packOptions.forEach((label) => {
+          label.setAttribute('aria-checked', 'false');
+          label.setAttribute('aria-pressed', 'false');
+          label.querySelector('input[type="radio"]').checked = false;
+        });
+        uidInput.value = '';
+        uidError.classList.add('hidden');
+        submitBtn.disabled = true;
+        receiptSection.classList.add('hidden');
+        paymentSection.classList.add('hidden');
+        popup.classList.add('hidden');
+        topupForm.classList.remove('hidden');
+        topupForm.scrollIntoView({ behavior: 'smooth' });
+        uidInput.focus();
+      }
+    })();
+  </script>
+ </body>
+</html>
