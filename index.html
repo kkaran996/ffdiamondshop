@@ -1,5 +1,6 @@
+<!DOCTYPE html>
 <html class="scroll-smooth" lang="en">
- <head>
+<head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   <title>
@@ -8,9 +9,9 @@
   <script src="https://cdn.tailwindcss.com">
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
-   body {
+    body {
       font-family: 'Poppins', sans-serif;
       background: radial-gradient(circle at center, #1a1a1a 0%, #0b0b0b 100%);
       color: #fff;
@@ -222,8 +223,8 @@
       z-index: 50;
     }
   </style>
- </head>
- <body>
+</head>
+<body>
   <header class="bg-gradient-to-r from-purple-500 via-purple-700 to-purple-900 shadow-2xl sticky top-0 z-50">
    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between select-none">
     <div class="flex items-center space-x-4">
@@ -561,21 +562,14 @@
       </div>
      </fieldset>
      <div>
-  <label class="block text-2xl font-extrabold mb-3 text-purple-400 drop-shadow-md select-none" for="uid">
-    Enter your Free Fire UID
-  </label>
-  <input 
-    autocomplete="off" 
-    class="w-full rounded-3xl border-4 border-purple-400 bg-gray-900 px-6 py-4 text-white placeholder-purple-300 text-xl font-semibold focus:outline-none focus:ring-4 focus:ring-purple-500 focus:border-purple-500 shadow-lg" 
-    id="uid" 
-    inputmode="numeric" 
-    name="uid" 
-    placeholder="Free Fire UID" 
-    required 
-    type="text"
-  />
+      <label class="block text-2xl font-extrabold mb-3 text-purple-400 drop-shadow-md select-none" for="uid">
+       Enter your Free Fire UID
+      </label>
+      <input aria-describedby="uid-error" autocomplete="off" class="w-full rounded-3xl border-4 border-purple-400 bg-gray-900 px-6 py-4 text-white placeholder-purple-300 text-xl font-semibold focus:outline-none focus:ring-4 focus:ring-purple-500 focus:border-purple-500 shadow-lg" id="uid" name="uid" placeholder="Free Fire UID" type="text"/>
+      <p class="text-red-500 mt-2 text-lg font-semibold hidden" id="uid-error" role="alert">
+      </p>
      </div>
-     <button class="w-full btn-glow py-4 rounded-3xl text-2xl shadow-xl select-none disabled:opacity-60 disabled:cursor-not-allowed" disabled="" id="submit-btn" type="submit" tabindex="0">
+     <button class="w-full btn-glow py-4 rounded-3xl text-2xl shadow-xl select-none disabled:opacity-60 disabled:cursor-not-allowed" id="submit-btn" type="submit" tabindex="0">
       Submit
      </button>
     </form>
@@ -728,33 +722,25 @@
         });
       });
 
-      // Validate UID input (10 digits)
+      // Validate UID input (no restrictions)
       function validateUID() {
-  const val = uidInput.value.trim();
-  const isValid = val !== ""; // ✅ Just check if not empty
+        return true; // Always return true since we removed validation
+      }
 
-  // Hide error always (since we're not showing validation message)
-  uidError.classList.add('hidden');
-  uidInput.removeAttribute('aria-invalid');
+      // Enable submit only if pack selected (UID validation removed)
+      function validateForm() {
+        const packSelected = selectedPack !== null;
+        submitBtn.disabled = !packSelected;
+      }
 
-  return isValid;
-}
-
-// Enable submit only if pack selected and UID filled
-function validateForm() {
-  const uidValid = validateUID();
-  const packSelected = selectedPack !== null;
-  submitBtn.disabled = !(uidValid && packSelected);
-}
-
-// Run validation on typing
-uidInput.addEventListener('input', validateForm);
+      uidInput.addEventListener('input', () => {
+        validateForm();
+      });
 
       // On form submit show receipt
       topupForm.addEventListener('submit', (e) => {
         e.preventDefault();
         if (!selectedPack) return;
-        if (!validateUID()) return;
 
         // Hide form and show receipt
         topupForm.classList.add('hidden');
@@ -876,5 +862,5 @@ uidInput.addEventListener('input', validateForm);
       }
     })();
   </script>
- </body>
+</body>
 </html>
